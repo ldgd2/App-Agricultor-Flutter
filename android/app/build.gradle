@@ -1,0 +1,40 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Asegúrate de que esté en este orden
+}
+
+android {
+    namespace = "com.example.agro_link" // Cambia según tu ID de paquete
+    compileSdk = 34 // La versión de SDK para la compilación debe estar actualizada
+
+    defaultConfig {
+        applicationId "com.example.agro_link" // Cambia este ID si tienes uno específico
+        minSdkVersion 21 // Configura aquí un valor específico o verifica `flutter.minSdkVersion`
+        targetSdkVersion 33 // Actualiza a la versión SDK que prefieras
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        release {
+            // Si tienes una clave de firma para lanzar tu app, configúralo aquí
+            signingConfig signingConfigs.debug // Usa release si tienes una firma específica para release
+            minifyEnabled false // Puedes cambiarlo a true si usas Proguard
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
